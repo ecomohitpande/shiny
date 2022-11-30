@@ -1,5 +1,5 @@
 library(shiny)
-library(dplyr)
+#library(dplyr)
 
 d <- read.csv("d.csv")
 
