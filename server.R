@@ -2,9 +2,7 @@ server <- function(input, output, session) {
   output$product <- renderTable({
     d <- read.csv("d.csv")
     
-    d= d %>% filter(cluster== "WEST")
-    d
-    
+    d    
     
   })
 }
