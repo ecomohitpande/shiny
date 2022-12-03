@@ -1,26 +1,25 @@
-library(shiny)
 library(mongolite)
-library(tidyverse)
+library(shiny)
 library(data.table)
-library(jsonlite)
+library(dplyr)  
 
 
-# df <- data.frame(id = c(1,2,3),
-#                   region1 = c("r1", "r1", "r2"),
-#                  vars = c("v1", "v2", "r3"))
-#mong$insert(df)
 
-## insert into database
-connection_string= 'mongodb+srv://test:test@cluster0.ewr6cqk.mongodb.net/?retryWrites=true&w=majority'
-mong <-  mongo(collection="st", db="studentdb", url=connection_string)
+##### Define connection parameters and make connections #####
 
-loadData <- function(qry){
-  mong <- mongo(collection="st", db="studentdb", url=connection_string,
-                verbose = TRUE)
-  
-  df <- mong$find(qry)
-  return(df)
-}
+
+url_path = 'mongodb+srv://test:test@cluster0.ewr6cqk.mongodb.net/?retryWrites=true&w=majority'
+
+# Connect to the trips collection from sample training DB
+
+mongo_connect = mongo(collection = "st", db = "studentdb",url = url_path, verbose = TRUE)
+
+
+# list out distinct boroughs
+data = mongo_connect$distinct("country")
+
+alldata <- mongo_connect$find('{}')
+
 
 
 
