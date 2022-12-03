@@ -1,40 +1,22 @@
-server=function(input, output, session) {
+server=function(input, output, session){
   
-  # observeEvent(
-  #   input$cluster,
-  #   updateSelectInput(session, "country", "Select Country",
-  #                     choices = data$country[data$cluster==input$cluster]))
-  # 
-  # observeEvent(
-  #   mong$aggregate('[{"$group": {"_id":"$country1"}}]'),
-  #   updateSelectInput(session, "country", "Select Country",
-  #                     choices = mong$aggregate('[{"$group": {"_id":"$country"}}]')[mong$aggregate('[{"$group": {"_id":"$country1"}}]')==mong$aggregate('[{"$group": {"_id":"$country1"}}]')]))
-  # 
-  qryResults <- reactive({
+  # observe the selectinput borough & populate the cuisine selectinput
+  # update select input logic below
+  
+  observeEvent(
+    input$boro,
+    {q = paste0('{ "country" : "',input$boro , '"}')
+    updateSelectInput(session, "cuis", "country",
+                      choices = mongo_connect$distinct("country", query = q))
+    })
+  
+  
+  output$table <- renderTable({
     
-    observeEvent(
-      mong$aggregate('[{"$group": {"_id":"$country1"}}]'),
-      updateSelectInput(session, "country", "Select Country",
-                        choices = mong$aggregate('[{"$group": {"_id":"$country"}}]')[mong$aggregate('[{"$group": {"_id":"$country1"}}]')==mong$aggregate('[{"$group": {"_id":"$country1"}}]')]))
+    d= alldata %>% filter(country== input$cuis) %>% data.frame()
+    d
     
-      
-    region <- list(country = input$country1)
-
-    qry <- paste0('{ "country1" : "',region,'"}')
-    df <- loadData(qry)
-    return(df)
-    df= data.frame(df)
-
+    
   })
-  
-  output$qry_results <- renderDataTable({
-   qryResults()
-     
-      # p %>% filter(source== "Eurasian Bullfinch")
-    
-     
-  })
-  
-  output$text1 <- renderText(nrow(qryResults()))
   
 }
