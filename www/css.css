@@ -1,0 +1,62 @@
+.well {
+    min-height: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background-color: cadetblue;
+    border: 9px solid #e3e3e3;
+    border-radius: 100px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+    ): ;
+}
+
+
+.box.box-solid.box-success>.box-header {
+    color: white;
+    /* background: repeating-linear-gradient(30deg, yellow, transparent 500px); */
+    background-color: cadetblue;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: black;
+}
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    text-shadow: 0 0 black;
+    color: black;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+
+.h4, h4 {
+    font-size: 28px;
+}
+
+element.style {
+    color: white;
+    background-color: deeppink;
+}
+
+
+ h4 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: whitesmoke;
+}
+
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
